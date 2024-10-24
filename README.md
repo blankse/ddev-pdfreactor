@@ -6,8 +6,23 @@ This repository allows you to quickly install [PDFreactor](https://www.pdfreacto
 
 ## Installation
 
-1. `ddev get blankse/ddev-pdfreactor`
-2. `ddev restart`
+For DDEV v1.23.5 or above run
+
+```sh
+ddev add-on get blankse/ddev-pdfreactor
+```
+
+For earlier versions of DDEV run
+
+```sh
+ddev get blankse/ddev-pdfreactor
+```
+
+Then restart your project
+
+```sh
+ddev restart
+```
 
 ## Explanation
 
