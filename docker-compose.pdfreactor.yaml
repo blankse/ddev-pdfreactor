@@ -14,4 +14,5 @@ services:
     external_links:
     - "ddev-router:${DDEV_SITENAME}.${DDEV_TLD}"
     healthcheck:
-      test: ["CMD-SHELL", "curl --fail -s localhost:9423"]
+      # The image ships no curl/wget/grep, so use pure bash with /dev/tcp
+      test: ["CMD", "bash", "-c", "exec 3<>/dev/tcp/localhost/9423 && printf 'GET /service/rest/status HTTP/1.0\\r\\nHost: localhost\\r\\n\\r\\n' >&3 && read -r status <&3 && [[ $$status == *' 200 '* ]]"]
